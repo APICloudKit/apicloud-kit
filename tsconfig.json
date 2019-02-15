@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "allowSyntheticDefaultImports": true,
+        "lib": ["es2015", "dom"],
+        "module": "esnext",
+        "moduleResolution": "node",
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "preserveConstEnums": true,
+        "removeComments": false,
+        "skipLibCheck": true,
+        "strict": true,
+        "target": "esnext",
+        "outDir": "./dist",
+        "inlineSourceMap": true,
+        "declaration": true,
+        "typeRoots": ["types"]
+    },
+    "include": ["./**/*.ts"],
+    "exclude": ["node_modules", "dist", "**/*.spec.ts"]
+}
