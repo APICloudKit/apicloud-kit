@@ -1,4 +1,3 @@
-import { Rect } from './apiParams';
 import { ObjectLiteral } from './common';
 import { INavbarFrameQuery } from './navigation';
 

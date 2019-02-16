@@ -1,4 +1,4 @@
-export namespace api {
+namespace api {
     /**
      * 应用的 ID，可以在网站控制台概览里面查看，字符串类型
      */
@@ -84,7 +84,7 @@ export namespace api {
     function cancelAjax(p: CancelAjaxParams): ApiRes<true>;
 }
 
-export namespace apis {
+namespace api {
     function getJiGuangPush(): ApiRes<JiGuangPush>;
     function getWx(): ApiRes<Wx>;
 }

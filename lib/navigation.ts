@@ -1,12 +1,12 @@
 import { queryStringify } from './util';
 import { ak } from '.';
 import { WinPageParam } from '../types/win';
-import { IPage, INavigateToOptions } from '../types/navigation';
+import { Navigation } from '../types/navigation';
 
 export const navigateToFactory = <Q>(
     pageName: string,
-    pages: { [k: string]: IPage },
-    options?: INavigateToOptions<Q>,
+    pages: { [k: string]: Navigation.IPage },
+    options?: Navigation.INavigateToOptions<Q>,
 ) => async () => {
     const config = pages[pageName];
     const winName = `${pageName}Win`;

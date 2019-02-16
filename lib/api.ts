@@ -1,16 +1,14 @@
 import { getQueriedUrl } from './util';
-import { OpenWinParams, OpenFrameParams } from '../types/apiParams';
-import { api } from '../types/api';
-// import { api } from '../types/originalApi';
+import { AK } from '../types/api.interface';
 
-export const openWin = <T, T2>(p: OpenWinParams<T, T2>) =>
+export const openWin = <T, T2>(p: AK.OpenFrameParams<T, T2>) =>
     api.openWin<T, T2>({
         ...p,
         ...getQueriedUrl(p.url, p.query),
         useWKWebView: true,
     });
 
-export const openFrame = <T, T2>(p: OpenFrameParams<T, T2>) =>
+export const openFrame = <T, T2>(p: AK.OpenFrameParams<T, T2>) =>
     api.openFrame<T, T2>({
         ...p,
         ...getQueriedUrl(p.url, p.query),
