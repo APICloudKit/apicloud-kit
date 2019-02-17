@@ -1,4 +1,6 @@
-namespace api {
+/// <reference path="../types/api.interface.d.ts" />
+
+declare namespace api {
     /**
      * 应用的 ID，可以在网站控制台概览里面查看，字符串类型
      */
@@ -13,78 +15,94 @@ namespace api {
      */
     const statusBarAppearance: boolean;
     const pageParam: any;
+    const safeArea: AK.GetSafeAreaRes;
 
-    function onKeyBack(cb: () => void): ApiRes<true>;
-    function onNoticeclicked(cb: (ret: any) => void): ApiRes<true>;
-    function setStatusBarStyle(style: string): ApiRes<true>;
-    function makePhoneCall(number: string): ApiRes<true>;
-    function openWin<T, T2>(params: IOpenFrame<T, T2>): ApiRes<true>;
-    function openFrame<T, T2>(params: IOpenFrame<T, T2>): ApiRes<true>;
-    function closeFrame(): ApiRes<true>;
-    function closeFrameGroup(name: string): ApiRes<true>;
-    function setFrameAttr(params: SetFrameAttrParams): ApiRes<true>;
-    function setFrameGroupAttr(p: SetFrameGroupAttrParams): ApiRes<true>;
-    function bringFrameToFront(params: BringFrameToFrontParams): ApiRes<true>;
+    function onKeyBack(cb: () => void): AK.ApiRes<true>;
+    function onNoticeclicked(cb: (ret: any) => void): AK.ApiRes<true>;
+    function setStatusBarStyle(style: string): AK.ApiRes<true>;
+    function makePhoneCall(number: string): AK.ApiRes<true>;
+    function openWin<Q, Param>(
+        params: AK.OpenFrameParams<Q, Param>,
+    ): AK.ApiRes<true>;
+    function openFrame<T, T2>(
+        params: AK.OpenFrameParams<T, T2>,
+    ): AK.ApiRes<true>;
+    function closeFrame(): AK.ApiRes<true>;
+    function closeFrameGroup(name: string): AK.ApiRes<true>;
+    function setFrameAttr(params: AK.SetFrameAttrParams): AK.ApiRes<true>;
+    function setFrameGroupAttr(p: AK.SetFrameGroupAttrParams): AK.ApiRes<true>;
+    function bringFrameToFront(
+        params: AK.BringFrameToFrontParams,
+    ): AK.ApiRes<true>;
     function openFrameGroup<T, T2>(
-        params: IOpenFrameGroup<T, T2>,
-        cb: OpenFrameGroupCb,
-    ): ApiRes<true>;
-    function setFrameGroupIndex(params: SetFrameGroupIndexParams): ApiRes<true>;
-    function closeWin(): ApiRes<true>;
-    function closeToWin(name: string): ApiRes<true>;
-    function imageCache(params: ImageCacheParams): ApiRes<ImageCacheRes>;
-    function download(params: DownloadParams): ApiRes<DownloadRes>;
-    function cancelDownload(p: CancelDownloadParams): ApiRes<true>;
-    function sendEvent<T>(name: string, args?: T): ApiRes<true>;
-    function on<T>(name: string, cb: (ret: { value: T }) => void): ApiRes<true>;
+        params: AK.OpenFrameGroupParams<T, T2>,
+        cb: AK.OpenFrameGroupCb,
+    ): AK.ApiRes<true>;
+    function setFrameGroupIndex(
+        params: AK.SetFrameGroupIndexParams,
+    ): AK.ApiRes<true>;
+    function closeWin(): AK.ApiRes<true>;
+    function closeToWin(name: string): AK.ApiRes<true>;
+    function imageCache(params: AK.ImageCacheParams): AK.ApiRes<ImageCacheRes>;
+    function download(params: AK.DownloadParams): AK.ApiRes<DownloadRes>;
+    function cancelDownload(p: AK.CancelDownloadParams): AK.ApiRes<true>;
+    function sendEvent<T>(name: string, args?: T): AK.ApiRes<true>;
+    function on<T>(
+        name: string,
+        cb: (ret: { value: T }) => void,
+    ): AK.ApiRes<true>;
     function setRefreshHeaderInfo(
-        params: SetRefreshHeaderInfoParams,
+        params: AK.SetRefreshHeaderInfoParams,
         cb: () => void,
-    ): ApiRes<true>;
-    function refreshHeaderLoadDone(): ApiRes<true>;
-    function getSafeArea(): GetSafeAreaRes;
+    ): AK.ApiRes<true>;
+    function refreshHeaderLoadDone(): AK.ApiRes<true>;
+
     function getPageParam<T>(): T | false;
     function getFrameName(): string | false;
     function getWinName(): string | false;
     function getPicture(
-        params: GetPictureParams,
-        cb: GetPictureCb,
-    ): ApiRes<true>;
-    function alert(params: AlertParams, cb?: AlertCb): ApiRes<true>;
-    function confirm(p: ConfirmParams, cb?: ConfirmRes): ApiRes<true>;
-    function showProgress(p: ShowProgressParams): ApiRes<true>;
-    function hideProgress(): ApiRes<true>;
-    function toast(p: ToastParams): ApiRes<true>;
-    function execScript(p: ExecScriptParams): ApiRes<true>;
-    function getClipBoard(): Clipboard;
-    function setPrefs<T extends Prefs<T['value']>>(p: T): ApiRes<true>;
-    function getPrefs<T extends Prefs<T['value']>>(
+        params: AK.GetPictureParams,
+        cb: AK.GetPictureCb,
+    ): AK.ApiRes<true>;
+    function alert(params: AK.AlertParams, cb?: AlertCb): AK.ApiRes<true>;
+    function confirm(p: AK.ConfirmParams, cb?: ConfirmRes): AK.ApiRes<true>;
+    function showProgress(p: AK.ShowProgressParams): AK.ApiRes<true>;
+    function hideProgress(): AK.ApiRes<true>;
+    function toast(p: AK.ToastParams): AK.ApiRes<true>;
+    function execScript(p: AK.ExecScriptParams): AK.ApiRes<true>;
+    function getClipBoard(): AK.Clipboard;
+    function setPrefs<T extends AK.Prefs<T['value']>>(p: T): AK.ApiRes<true>;
+    function getPrefs<T extends AK.Prefs<T['value']>>(
         p: T,
     ): Promise<T['value'] | null>;
-    function removePrefs<T extends Prefs<T['value']>>(p: T): ApiRes<true>;
-    function rebootApp(): ApiRes<true>;
+    function removePrefs<T extends AK.Prefs<T['value']>>(p: T): AK.ApiRes<true>;
+    function rebootApp(): AK.ApiRes<true>;
     /**
      * 设置指定 frame 的页面加载监听，仅在 window 中调用生效，可以对多个 frame 进行监听
      */
-    function setFrameClient(p: SetFrameClientParams): ApiRes<true>;
+    function setFrameClient(p: AK.SetFrameClientParams): AK.ApiRes<true>;
     /**
      * 获取当前所有打开的window。该方法为同步方法。
      */
-    function windows(): ApiRes<WindowsRes>;
+    function windows(): AK.ApiRes<WindowsRes>;
     /**
      * 获取当前window中所有打开的frame（包括frameGroup中的frame）。该方法为同步方法。
      */
-    function frames(): ApiRes<FramesRes>;
+    function frames(): AK.ApiRes<FramesRes>;
     /**
      * 在指定 window 或者 frame 中加载HTML数据，对于 frameGroup 里面的 frame 也有效。
      */
-    function loadData(): ApiRes<true>;
+    function loadData(): AK.ApiRes<true>;
 
-    function ajax(p: AjaxParams): ApiRes<AjaxRes>;
-    function cancelAjax(p: CancelAjaxParams): ApiRes<true>;
+    function ajax(p: AjaxParams): AK.ApiRes<AjaxRes>;
+    function cancelAjax(p: AK.CancelAjaxParams): AK.ApiRes<true>;
+    function addEventListener<T>(
+        p: AK.AddEventListenerParams,
+        cb: AK.AddEventListenerCb<T>,
+    ): AK.ApiRes<true>;
 }
 
-namespace api {
-    function getJiGuangPush(): ApiRes<JiGuangPush>;
-    function getWx(): ApiRes<Wx>;
+declare namespace api {
+    function getJiGuangPush(): AK.ApiRes<JiGuangPush>;
+    function getWx(): AK.ApiRes<Wx>;
 }

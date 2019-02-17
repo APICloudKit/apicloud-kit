@@ -19,14 +19,30 @@ export namespace Navigation {
         frameGroupActiveIndex?: number;
     }
 
-    type IPage = {
-        frameQuery?: ObjectLiteral;
+    interface WinPageParam<P> {
+        name: P;
+        hasNoNavbar?: boolean;
+        navbarInfo?: Navigation.INavbarFrameQuery;
+        frames?: Navigation.IPageFrames[];
+    }
+
+    interface IPageFrames {
+        name: string;
+        rect: AK.Rect;
+        url?: string;
+        query?: AK.ObjectLiteral;
+        bgColor?: string;
         frameGroup?: {
-            url?: string;
-            frameQuery?: ObjectLiteral;
+            name: string;
+            url: string;
+            query?: AK.ObjectLiteral;
         }[];
-        frameRect?: Rect;
+        frameGroupActiveIndex?: number;
+    }
+
+    type IPage = {
+        navbarInfo?: Navigation.INavbarFrameQuery;
         frameBgColor?: string;
-        navbarInfo: INavbarFrameQuery;
+        frames?: IPageFrames[];
     };
 }

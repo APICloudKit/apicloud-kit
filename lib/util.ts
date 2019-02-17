@@ -1,27 +1,11 @@
+import { ak } from '.';
+
 declare const window: any;
 
-export const clientDidInit = (
-    ctx: any,
-    cb?: () => void,
-    beforeCb?: () => void,
-) => {
+export const clientDidInit = (cb?: () => void, beforeCb?: () => void) => {
     const init = () => {
         setTimeout(() => {
             beforeCb && beforeCb();
-            // apis.on<LoginSuccEvent>('loginSucc', async ({ value }) => {
-            //     // await saveAuthAsync(value.token);
-            //     // await setAuthAsync();
-            //     return ctx.reload ? ctx.reload() : location.reload();
-            // });
-            // apis.on<RefreshEvent>('refresh', ({ value }) => {
-            //     if (value.ctxName === apis.getFrameName()) {
-            //         ctx.reload ? ctx.reload() : location.reload();
-            //     }
-            // });
-            if (ctx.props.status === 401) {
-                // @bug 最后应该改成客户端请求接口
-                // return openLogin();
-            }
             cb && cb();
         }, 100);
     };
@@ -34,6 +18,14 @@ export const clientDidInit = (
 
 export const checkIsAPICloud = () =>
     typeof window !== undefined && /apiEnv/.test(window.location.href);
+
+export const getSafeAreaBottom = () => {
+    const safeArea = ak.getSafeArea();
+    if (safeArea) {
+        return safeArea.bottom;
+    }
+    return 0;
+};
 
 export const queryStringify = (queryObj: any) => {
     return Object.keys(queryObj)

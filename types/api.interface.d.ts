@@ -1,11 +1,11 @@
-type ObjectLiteral = {
-    [key: string]: any;
-};
+namespace AK {
+    export type ObjectLiteral = {
+        [key: string]: any;
+    };
 
-type ApiRes<T> = T | null;
+    export type ApiRes<T> = T | null;
 
-export namespace AK {
-    interface JiGuangPush {
+    export interface JiGuangPush {
         init(): Promise<void>;
         getRegistrationId(): Promise<string>;
         bindAliasAndTags(p: {
@@ -25,13 +25,13 @@ export namespace AK {
         stopPush(): void;
     }
 
-    interface OpenFrameParams<T, T2> {
+    export interface OpenFrameParams<Q, Param> {
         name: string;
         url: string;
-        query?: T;
+        query?: Q;
         data?: ObjectLiteral;
         rect?: Rect;
-        pageParam?: T2;
+        pageParam?: Param;
         useWKWebView?: boolean;
         bounces?: boolean;
         bgColor?: string;
@@ -45,7 +45,7 @@ export namespace AK {
         };
     }
 
-    interface IOpenFrameGroupParams<T, T2> {
+    export interface OpenFrameGroupParams<T, T2> {
         name: string;
         rect: Rect;
         frames: {
@@ -59,7 +59,7 @@ export namespace AK {
         }[];
     }
 
-    interface Rect {
+    export interface Rect {
         x?: number;
         y?: number;
         w?: number | string;
@@ -70,41 +70,44 @@ export namespace AK {
         marginRight?: number; // 相对父 window 右外边距的距离
     }
 
-    interface SetFrameAttrParams {
+    export interface SetFrameAttrParams {
         name: string;
         hidden?: boolean;
         bgColor?: string;
     }
 
-    interface SetFrameGroupAttrParams {
+    export interface SetFrameGroupAttrParams {
         name: string;
         hidden?: boolean;
         scrollEnabled?: boolean;
         rect?: Rect;
     }
 
-    interface BringFrameToFrontParams {
+    export interface BringFrameToFrontParams {
         from: string;
         to?: string;
     }
 
-    type OpenFrameGroupCb = (ret: { name: string; index: number }) => void;
+    export type OpenFrameGroupCb = (ret: {
+        name: string;
+        index: number;
+    }) => void;
 
-    interface SetFrameGroupIndexParams {
+    export interface SetFrameGroupIndexParams {
         index: number;
         name: string;
         scroll?: boolean;
     }
 
-    interface ImageCacheParams {
+    export interface ImageCacheParams {
         url: string;
         encode?: boolean;
         thumbnail?: boolean;
     }
 
-    type ImageCacheRes = Promise<{ status: boolean; url: string }>;
+    export type ImageCacheRes = Promise<{ status: boolean; url: string }>;
 
-    interface DownloadParams {
+    export interface DownloadParams {
         url: string;
         savePath?: string;
         cache?: boolean;
@@ -112,12 +115,12 @@ export namespace AK {
         allowResume?: boolean;
     }
 
-    type DownloadRes = Promise<{
+    export type DownloadRes = Promise<{
         filesize: number;
         savePath: string;
     }>;
 
-    interface SetRefreshHeaderInfoParams {
+    export interface SetRefreshHeaderInfoParams {
         loadingImg?: string;
         bgColor?: string;
         textColor?: string;
@@ -126,14 +129,14 @@ export namespace AK {
         showTime?: boolean;
     }
 
-    type GetSafeAreaRes = {
+    export type GetSafeAreaRes = {
         top: number;
         left: number;
         bottom: number;
         right: number;
     } | null;
 
-    interface GetPictureParams {
+    export interface GetPictureParams {
         /**
          * 图片源类型，从相册、图片库或相机获取图片
          */
@@ -188,7 +191,7 @@ export namespace AK {
         groupName?: string;
     }
 
-    type GetPictureCb = (
+    export type GetPictureCb = (
         ret: {
             data: string; //图片路径
             base64Data: string; //base64数据，destinationType为base64时返回
@@ -199,18 +202,18 @@ export namespace AK {
         },
     ) => void;
 
-    interface AlertParams {
+    export interface AlertParams {
         title?: string;
         msg: string;
         buttons?: string[];
     }
 
-    type AlertCb = (ret: {
+    export type AlertCb = (ret: {
         // 从 1 开始
         buttonIndex: number;
     }) => void;
 
-    interface ConfirmParams {
+    export interface ConfirmParams {
         title?: string;
         msg: string;
         /**
@@ -219,18 +222,18 @@ export namespace AK {
         buttons?: string[];
     }
 
-    type ConfirmRes = (ret: {
+    export type ConfirmRes = (ret: {
         // 从 1 开始
         buttonIndex: number;
     }) => void;
 
-    interface ShowProgressParams {
+    export interface ShowProgressParams {
         title?: string;
         text?: string;
         modal?: boolean;
     }
 
-    interface ToastParams {
+    export interface ToastParams {
         msg?: string;
         duration?: number;
         location?: 'top' | 'middle' | 'bottom';
@@ -240,13 +243,13 @@ export namespace AK {
         global?: boolean;
     }
 
-    interface ExecScriptParams {
+    export interface ExecScriptParams {
         name?: string;
         frameName?: string;
         script?: string;
     }
 
-    interface ShareToWechatParams {
+    export interface ShareToWechatParams {
         scene: 'session' | 'timeline' | 'favorite';
         title: string;
         thumb: string;
@@ -254,28 +257,28 @@ export namespace AK {
         description: string;
     }
 
-    interface Wx {
+    export interface Wx {
         isInstalled: () => Promise<boolean>;
         shareWebpage: (params: ShareToWechatParams) => Promise<boolean>;
     }
 
-    interface Clipboard {
+    export interface Clipboard {
         get(): Promise<any>;
         set(value: string): Promise<void>;
         setListener(cb: (ret: { value: string; type: string }) => void): void;
         removeListener(): void;
     }
 
-    interface Prefs<T> {
+    export interface Prefs<T> {
         key: string;
         value?: T;
     }
 
-    interface SetFrameClientParams {
+    export interface SetFrameClientParams {
         frameName: string;
     }
 
-    type SetFrameClientCb = (ret: {
+    export type SetFrameClientCb = (ret: {
         /**
          * 加载状态，数字类型，取值范围：0-开始加载；1-加载进度发生变化；2-结束加载；3-title发生变化；4-url发生变化
          */
@@ -285,7 +288,7 @@ export namespace AK {
         url?: string;
     }) => void;
 
-    interface Windows {
+    export interface Windows {
         /**
          * window名字，字符串类型
          */
@@ -296,9 +299,9 @@ export namespace AK {
         children: Windows[];
     }
 
-    type WindowsRes = Windows[];
+    export type WindowsRes = Windows[];
 
-    type FramesRes = {
+    export type FramesRes = {
         name: string;
         /**
          * 父窗口的名字，如果是frameGroup中的frame，该值为frameGroup的名字，字符串类型
@@ -306,7 +309,7 @@ export namespace AK {
         parent: string;
     }[];
 
-    interface LoadDataParams {
+    export interface LoadDataParams {
         /**
          * window 名称，若要跨 window ，该字段必须指定，首页的名称为 root
          */
@@ -325,7 +328,7 @@ export namespace AK {
         data?: string;
     }
 
-    type RequestMethods =
+    export type RequestMethods =
         | 'get'
         | 'post'
         | 'put'
@@ -335,7 +338,7 @@ export namespace AK {
         | 'trace'
         | 'patch';
 
-    interface AjaxParams {
+    export interface AjaxParams {
         url: string;
         /**
          * 该字段用于传给cancelAjax方法来取消请求，如果传入该字段，请保证各个ajax的tag字段唯一
@@ -410,7 +413,7 @@ export namespace AK {
         safeMode?: 'none' | 'both' | 'request' | 'response';
     }
 
-    type AjaxRes = Promise<{
+    export type AjaxRes = Promise<{
         ret: {
             statusCode: number;
             headers: any;
@@ -418,11 +421,22 @@ export namespace AK {
         };
     }>;
 
-    interface CancelAjaxParams {
+    export interface CancelAjaxParams {
         tag: string;
     }
 
-    interface CancelDownloadParams {
+    export interface CancelDownloadParams {
         url: string;
     }
+
+    export interface EventType {
+        name: string;
+        value: any;
+    }
+
+    export interface AddEventListenerParams<T extends EventType> {
+        name: T['name'];
+    }
+
+    export type AddEventListenerCb<T> = (ret: { value: T }) => void;
 }
