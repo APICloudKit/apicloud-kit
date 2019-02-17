@@ -1,5 +1,5 @@
-// import { AK } from './api.interface';
 import { Navigation } from './navigation';
-import { navigation, ak, akUtil } from '../dist/index';
+import { api as ak } from './api';
+import { akUtil } from './util';
 
-export { ak, navigation, Navigation, akUtil };
+export { ak, Navigation, akUtil };

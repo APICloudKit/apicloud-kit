@@ -1,6 +1,4 @@
-/// <reference path="../types/api.interface.d.ts" />
-
-declare namespace api {
+export declare namespace api {
     /**
      * 应用的 ID，可以在网站控制台概览里面查看，字符串类型
      */
@@ -16,6 +14,11 @@ declare namespace api {
     const statusBarAppearance: boolean;
     const pageParam: any;
     const safeArea: AK.GetSafeAreaRes;
+
+    function getPageParam<T>(): T | false;
+    function getFrameName(): string | false;
+    function getWinName(): string | false;
+    function getSafeArea(): AK.GetSafeAreaRes;
 
     function onKeyBack(cb: () => void): AK.ApiRes<true>;
     function onNoticeclicked(cb: (ret: any) => void): AK.ApiRes<true>;
@@ -57,9 +60,6 @@ declare namespace api {
     ): AK.ApiRes<true>;
     function refreshHeaderLoadDone(): AK.ApiRes<true>;
 
-    function getPageParam<T>(): T | false;
-    function getFrameName(): string | false;
-    function getWinName(): string | false;
     function getPicture(
         params: AK.GetPictureParams,
         cb: AK.GetPictureCb,
@@ -102,7 +102,7 @@ declare namespace api {
     ): AK.ApiRes<true>;
 }
 
-declare namespace api {
+export declare namespace api {
     function getJiGuangPush(): AK.ApiRes<JiGuangPush>;
     function getWx(): AK.ApiRes<Wx>;
 }

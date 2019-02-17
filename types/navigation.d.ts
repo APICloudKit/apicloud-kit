@@ -1,6 +1,14 @@
 import { ObjectLiteral } from './common';
 
 export namespace Navigation {
+    declare function navigateToFactory<Q>(
+        pageName: string,
+        pages: {
+            [k: string]: IPage;
+        },
+        options?: INavigateToOptions<Q>,
+    ): () => Promise<void>;
+
     interface INavbarFrameQuery {
         type?: string;
         title?: string;
