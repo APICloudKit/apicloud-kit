@@ -51,10 +51,10 @@ export declare namespace api {
     function imageCache(params: AK.ImageCacheParams): AK.ApiRes<ImageCacheRes>;
     function download(params: AK.DownloadParams): AK.ApiRes<DownloadRes>;
     function cancelDownload(p: AK.CancelDownloadParams): AK.ApiRes<true>;
-    function sendEvent<T>(name: string, args?: T): AK.ApiRes<true>;
+    function sendEvent<T>(name: T['name'], args?: T['value']): AK.ApiRes<true>;
     function on<T>(
-        name: string,
-        cb: (ret: { value: T }) => void,
+        name: T['name'],
+        cb: (value: T['value']) => void,
     ): AK.ApiRes<true>;
     function setRefreshHeaderInfo(
         params: AK.SetRefreshHeaderInfoParams,
@@ -74,7 +74,7 @@ export declare namespace api {
     function execScript(p: AK.ExecScriptParams): AK.ApiRes<true>;
     function getClipBoard(): AK.Clipboard;
     function setPrefs<T extends AK.Prefs<T['value']>>(p: T): AK.ApiRes<true>;
-    function getPrefs<T extends AK.Prefs<T['value']>>(
+    export function getPrefs<T extends AK.Prefs<T['value']>>(
         p: T,
     ): Promise<T['value'] | null>;
     function removePrefs<T extends AK.Prefs<T['value']>>(p: T): AK.ApiRes<true>;
