@@ -1,0 +1,28 @@
+{
+    "todo-tree.tags": ["TODO", "FIXME", "todo", "BUG", "bug"],
+    "todo-tree.defaultHighlight": {
+        "icon": "alert",
+        "type": "text",
+        "foreground": "red",
+        "background": "white",
+        "iconColour": "green"
+    },
+    "todo-tree.customHighlight": {
+        "todo": {
+            "type": "line",
+            "foreground": "white",
+            "background": "green"
+        },
+        "fixme": {
+            "foreground": "black",
+            "iconColour": "yellow"
+        },
+        "bug": {
+            "icon": "alert",
+            "foreground": "yellow",
+            "background": "red",
+            "iconColour": "red",
+            "type": "line"
+        }
+    }
+}

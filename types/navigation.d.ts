@@ -3,7 +3,7 @@ import { ObjectLiteral } from './common';
 export namespace Navigation {
     declare function navigateToFactory<Q>(
         pageName: string,
-        pages: {
+        getPages: () => {
             [k: string]: IPage;
         },
         options?: INavigateToOptions<Q>,

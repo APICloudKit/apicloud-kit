@@ -1,3 +1,5 @@
+import { AK } from './api.interface';
+
 export declare namespace api {
     /**
      * 应用的 ID，可以在网站控制台概览里面查看，字符串类型
@@ -64,8 +66,8 @@ export declare namespace api {
         params: AK.GetPictureParams,
         cb: AK.GetPictureCb,
     ): AK.ApiRes<true>;
-    function alert(params: AK.AlertParams, cb?: AlertCb): AK.ApiRes<true>;
-    function confirm(p: AK.ConfirmParams, cb?: ConfirmRes): AK.ApiRes<true>;
+    function alert(params: AK.AlertParams, cb?: AK.AlertCb): AK.ApiRes<true>;
+    function confirm(p: AK.ConfirmParams, cb?: AK.ConfirmRes): AK.ApiRes<true>;
     function showProgress(p: AK.ShowProgressParams): AK.ApiRes<true>;
     function hideProgress(): AK.ApiRes<true>;
     function toast(p: AK.ToastParams): AK.ApiRes<true>;
