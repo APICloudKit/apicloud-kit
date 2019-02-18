@@ -32,6 +32,7 @@ export namespace Navigation {
         hasNoNavbar?: boolean;
         navbarInfo?: Navigation.INavbarFrameQuery;
         frames?: Navigation.IPageFrames[];
+        query: any;
     }
 
     interface IPageFrames {
