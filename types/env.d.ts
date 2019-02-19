@@ -11,4 +11,6 @@ export namespace akEnv {
     declare const getAuthToken: (
         authTokenKey?: string,
     ) => Promise<string | null>;
+
+    declare const rmAuthToken: (authTokenKey?: string) => Promise<void | null>;
 }

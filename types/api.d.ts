@@ -46,7 +46,7 @@ export declare namespace api {
     function setFrameGroupIndex(
         params: AK.SetFrameGroupIndexParams,
     ): AK.ApiRes<true>;
-    function closeWin(): AK.ApiRes<true>;
+    function closeWin(name?: string): AK.ApiRes<true>;
     function closeToWin(name: string): AK.ApiRes<true>;
     function imageCache(params: AK.ImageCacheParams): AK.ApiRes<ImageCacheRes>;
     function download(params: AK.DownloadParams): AK.ApiRes<DownloadRes>;
