@@ -34,8 +34,9 @@ export namespace Navigation {
         navbarInfo?: Navigation.INavbarFrameQuery;
         frames?: Navigation.IPageFrames[];
         query: any;
-        hasTabbar?: boolean;
-        hasNavbar?: boolean;
+        hasTabbar: boolean;
+        hasNavbar: boolean;
+        cannotClose: boolean;
     }
 
     interface IPageFrames {
@@ -58,5 +59,6 @@ export namespace Navigation {
         frames?: IPageFrames[];
         hasTabbar?: boolean;
         hasNavbar?: boolean;
+        cannotClose?: boolean;
     };
 }
