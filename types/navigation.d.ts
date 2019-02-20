@@ -26,6 +26,7 @@ export namespace Navigation {
         query?: Q;
         navbarInfo?: INavbarFrameQuery;
         frameGroupActiveIndex?: number;
+        isPkg?: boolean;
     }
 
     interface WinPageParam<P> {
