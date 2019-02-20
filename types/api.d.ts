@@ -25,7 +25,6 @@ export declare namespace api {
 
     function onKeyBack(cb: () => void): AK.ApiRes<true>;
     function onNoticeclicked(cb: (ret: any) => void): AK.ApiRes<true>;
-    function setStatusBarStyle(style: string): AK.ApiRes<true>;
     function makePhoneCall(number: string): AK.ApiRes<true>;
     function openWin<Q, Param>(
         params: AK.OpenFrameParams<Q, Param>,
@@ -103,6 +102,7 @@ export declare namespace api {
         p: AK.AddEventListenerParams,
         cb: AK.AddEventListenerCb<T>,
     ): AK.ApiRes<true>;
+    function setStatusBarStyle(style: 'dark' | 'light'): AK.ApiRes<true>;
 }
 
 export declare namespace api {

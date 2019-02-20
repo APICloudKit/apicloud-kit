@@ -4,9 +4,9 @@ import { AK } from './api.interface';
 export namespace Navigation {
     declare function navigateToFactory<Q>(
         pageName: string,
-        getPages: () => {
+        getPages: () => Promise<{
             [k: string]: IPage;
-        },
+        }>,
         options?: INavigateToOptions<Q>,
     ): () => Promise<void>;
 
