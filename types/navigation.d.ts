@@ -34,6 +34,8 @@ export namespace Navigation {
         navbarInfo?: Navigation.INavbarFrameQuery;
         frames?: Navigation.IPageFrames[];
         query: any;
+        hasTabbar?: boolean;
+        hasNavbar?: boolean;
     }
 
     interface IPageFrames {
@@ -54,5 +56,7 @@ export namespace Navigation {
         navbarInfo?: Navigation.INavbarFrameQuery;
         frameBgColor?: string;
         frames?: IPageFrames[];
+        hasTabbar?: boolean;
+        hasNavbar?: boolean;
     };
 }
