@@ -102,7 +102,7 @@ export declare namespace api {
         p: AK.AddEventListenerParams,
         cb: AK.AddEventListenerCb<T>,
     ): AK.ApiRes<true>;
-    function setStatusBarStyle(style: 'dark' | 'light'): AK.ApiRes<true>;
+    function setStatusBarStyle(style: AK.StatusBarStyle): AK.ApiRes<true>;
 }
 
 export declare namespace api {

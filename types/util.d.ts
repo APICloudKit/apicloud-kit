@@ -1,5 +1,12 @@
+import { AK } from './api.interface';
+
 export namespace akUtil {
-    declare function clientDidInit(cb: () => void, beforeCb?: () => void): void;
+    declare function clientDidInit(
+        cb: () => void,
+        opts?: {
+            statusBarStyle?: AK.StatusBarStyle;
+        },
+    ): void;
 
     declare function checkIsAPICloud(): boolean;
 

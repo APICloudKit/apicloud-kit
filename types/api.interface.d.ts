@@ -438,4 +438,6 @@ export namespace AK {
     type AddEventListenerCb<T> = (ret: { value: T }) => void;
 
     type SystemType = 'ios' | 'android';
+
+    type StatusBarStyle = 'light' | 'black';
 }
