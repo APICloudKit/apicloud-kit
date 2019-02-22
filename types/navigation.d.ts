@@ -38,6 +38,7 @@ export namespace Navigation {
         hasTabbar: boolean;
         hasNavbar: boolean;
         cannotClose: boolean;
+        statusBarStyle?: AK.StatusBarStyle;
     }
 
     interface IPageFrames {
@@ -61,5 +62,6 @@ export namespace Navigation {
         hasTabbar?: boolean;
         hasNavbar?: boolean;
         cannotClose?: boolean;
+        statusBarStyle?: AK.StatusBarStyle;
     };
 }

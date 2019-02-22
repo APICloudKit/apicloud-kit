@@ -439,5 +439,15 @@ export namespace AK {
 
     type SystemType = 'ios' | 'android';
 
-    type StatusBarStyle = 'light' | 'black';
+    type StatusBarStyle = 'light' | 'dark';
+
+    type GetWindowsRes = {
+        name: string;
+        children?: GetWindowsRes[];
+    }[];
+
+    type GetFramesRes = {
+        name: string;
+        parent?: GetFramesRes[];
+    }[];
 }

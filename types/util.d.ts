@@ -4,7 +4,7 @@ export namespace akUtil {
     declare function clientDidInit(
         cb: () => void,
         opts?: {
-            statusBarStyle?: AK.StatusBarStyle;
+            // statusBarStyle?: AK.StatusBarStyle;
         },
     ): void;
 

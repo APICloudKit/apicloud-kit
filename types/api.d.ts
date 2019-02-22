@@ -22,6 +22,8 @@ export declare namespace api {
     function getWinName(): string | false;
     function getSafeArea(): AK.GetSafeAreaRes;
     function getSystemType(): AK.SystemType;
+    function getWindows(): AK.GetWindowsRes;
+    function getFrames(): AK.GetFramesRes;
 
     function onKeyBack(cb: () => void): AK.ApiRes<true>;
     function onNoticeclicked(cb: (ret: any) => void): AK.ApiRes<true>;
