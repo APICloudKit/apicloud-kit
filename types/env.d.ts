@@ -3,6 +3,8 @@ import { AK } from './api.interface';
 export namespace akEnv {
     type Env = 'development' | 'test' | 'production' | 'preProduction';
 
+    type ClientEnv = Env | 'package';
+
     type UrlConfig = {
         auth: {
             baseURL: string;
@@ -14,15 +16,10 @@ export namespace akEnv {
         };
     };
 
-    type EnvStoreConfig = {
-        client: string;
-        server: UrlConfig;
-        isRemember?: boolean;
-    };
-
     type EnvStore = {
-        current: Env;
-        config: { [key in Env]: EnvStoreConfig };
+        client: ClientEnv;
+        server: Env;
+        isRemember: boolean;
     };
 
     declare const saveAuthToken: (
