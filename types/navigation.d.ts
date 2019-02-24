@@ -1,5 +1,6 @@
 import { ObjectLiteral } from './common';
 import { AK } from './api.interface';
+import { akEnv } from './env';
 
 export namespace Navigation {
     declare function navigateToFactory<Q>(
@@ -26,7 +27,8 @@ export namespace Navigation {
         query?: Q;
         navbarInfo?: INavbarFrameQuery;
         frameGroupActiveIndex?: number;
-        isPkg?: boolean;
+        // 默认为 pkg
+        getClientEnv?: () => Promise<string>;
     }
 
     interface WinPageParam<P> {
