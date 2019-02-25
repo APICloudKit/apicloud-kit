@@ -24,6 +24,7 @@ export declare namespace ak {
     function getSystemType(): AK.SystemType;
     function getWindows(): AK.GetWindowsRes;
     function getFrames(): AK.GetFramesRes;
+    function getWidgetRootPath(): string | false;
 
     function onKeyBack(cb: () => void): AK.ApiRes<true>;
     function onNoticeclicked(cb: (ret: any) => void): AK.ApiRes<true>;
