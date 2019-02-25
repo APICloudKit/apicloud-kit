@@ -1,6 +1,6 @@
 import { AK } from './api.interface';
 
-export declare namespace api {
+export declare namespace ak {
     /**
      * 应用的 ID，可以在网站控制台概览里面查看，字符串类型
      */
@@ -74,7 +74,6 @@ export declare namespace api {
     function hideProgress(): AK.ApiRes<true>;
     function toast(p: AK.ToastParams): AK.ApiRes<true>;
     function execScript(p: AK.ExecScriptParams): AK.ApiRes<true>;
-    function getClipBoard(): AK.Clipboard;
     function setPrefs<T extends AK.Prefs<T['value']>>(p: T): AK.ApiRes<true>;
     export function getPrefs<T extends AK.Prefs<T['value']>>(
         p: T,
@@ -107,7 +106,9 @@ export declare namespace api {
     function setStatusBarStyle(style: AK.StatusBarStyle): AK.ApiRes<true>;
 }
 
-export declare namespace api {
-    function getJiGuangPush(): AK.ApiRes<JiGuangPush>;
+// third
+export declare namespace ak {
+    function getJiGuangPush(): AK.ApiRes<AK.JiGuangPush>;
     function getWx(): AK.ApiRes<Wx>;
+    function getClipBoard(): AK.ApiRes<AK.Clipboard>;
 }
