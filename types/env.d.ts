@@ -16,6 +16,13 @@ export namespace akEnv {
         };
     };
 
+    type BaseUrl = Record<akEnv.Env, akEnv.UrlConfig>;
+
+    interface ProjectConfig {
+        server: BaseUrl;
+        client: { [key in akEnv.ClientEnv]: string };
+    }
+
     type EnvStore = {
         client: ClientEnv;
         server: Env;

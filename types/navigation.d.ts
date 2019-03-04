@@ -19,6 +19,7 @@ export namespace Navigation {
         height?: number;
         hasNoBack?: boolean;
         isTransparent?: boolean;
+        isCustomizedBack?: boolean;
         icon?: 'message';
         [query: string]: string | number | boolean | undefined;
     }
