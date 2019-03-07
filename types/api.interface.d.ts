@@ -450,4 +450,34 @@ export namespace AK {
         name: string;
         parent?: GetFramesRes[];
     }[];
+
+    type RequestMethods =
+        | 'get'
+        | 'post'
+        | 'put'
+        | 'delete'
+        | 'head'
+        | 'options'
+        | 'trace'
+        | 'patch';
+
+    type RequestParams = {
+        url: string;
+        method?: RequestMethods;
+        timeout?: number;
+        dataType?: 'json' | 'text';
+        headers?: any;
+        returnAll?: boolean;
+        data?: {
+            body?: string;
+            values?: any;
+            files?: any;
+        };
+    };
+
+    type RequestRes<T> = Promise<{
+        statusCode: number;
+        headers: { ['Set-Cookie']: string };
+        body: T;
+    }>;
 }

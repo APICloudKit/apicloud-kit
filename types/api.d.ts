@@ -1,4 +1,5 @@
 import { AK } from './api.interface';
+import { akEnv } from './env';
 
 export declare namespace ak {
     /**
@@ -98,13 +99,14 @@ export declare namespace ak {
      */
     function loadData(): AK.ApiRes<true>;
 
-    function ajax(p: AjaxParams): AK.ApiRes<AjaxRes>;
-    function cancelAjax(p: AK.CancelAjaxParams): AK.ApiRes<true>;
+    // function ajax(p: AjaxParams): AK.ApiRes<AjaxRes>;
+    // function cancelAjax(p: AK.CancelAjaxParams): AK.ApiRes<true>;
     function addEventListener<T>(
         p: AK.AddEventListenerParams,
         cb: AK.AddEventListenerCb<T>,
     ): AK.ApiRes<true>;
     function setStatusBarStyle(style: AK.StatusBarStyle): AK.ApiRes<true>;
+    function request<T>(p: AK.RequestParams): AK.RequestRes<T>;
 }
 
 // third
