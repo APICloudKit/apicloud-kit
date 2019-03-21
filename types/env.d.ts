@@ -14,6 +14,11 @@ export namespace akEnv {
         business: {
             baseURL: string;
         };
+        [key: string]: {
+            baseURL: string;
+            client_id?: string;
+            client_secret?: string;
+        };
     };
 
     type BaseUrl = Record<akEnv.Env, akEnv.UrlConfig>;
