@@ -114,4 +114,5 @@ export declare namespace ak {
     function getJiGuangPush(): AK.ApiRes<AK.JiGuangPush>;
     function getWx(): AK.ApiRes<Wx>;
     function getClipBoard(): AK.ApiRes<AK.Clipboard>;
+    function getQRCodeScanner(): AK.ApiRes<>;
 }

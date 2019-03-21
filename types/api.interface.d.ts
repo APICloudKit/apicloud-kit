@@ -59,16 +59,21 @@ export namespace AK {
         }[];
     }
 
-    interface Rect {
+    interface RectBase {
         x?: number;
         y?: number;
         w?: number | string;
         h?: number | string;
+    }
+
+    interface RectMargin {
         marginLeft?: number; // 相对父 window 左外边距的距离
         marginTop?: number; // 相对父 window 上外边距的距离
         marginBottom?: number; // 相对父 window 下外边距的距离
         marginRight?: number; // 相对父 window 右外边距的距离
     }
+
+    interface Rect extends RectBase, RectMargin {}
 
     interface SetFrameAttrParams {
         name: string;
@@ -480,4 +485,184 @@ export namespace AK {
         headers: { ['Set-Cookie']: string };
         body: T;
     }>;
+
+    type QRCodeScannerOpenParams = {
+        /**
+         * （可选项）扫描结束后的提示音文件路径，要求本地路径（fs://、widget://），为保证兼容性，推荐使用 wav 格式的短音频文件
+         */
+        sound?: string;
+        /**
+         * （可选项）扫描页面是否自动旋转（横竖屏）
+         */
+        autorotation?: boolean;
+        /**
+         * （可选项）扫描的二维码/条形码图片是否自动保存到相册
+         */
+        saveToAlbum?: boolean;
+        /**
+         * (可选项) 字符串类型；竖屏时扫描线的颜色,支持支持rgb、rgba、#；
+         */
+        verticalLineColor?: string;
+        /**
+         * (可选项) 字符串类型；横屏时扫描线的颜色,支持支持rgb、rgba、#； (android不支持，android的横竖屏是一个颜色)
+         */
+        landscapeLineColor?: string;
+        /**
+         * (可选项) 字符串类型；二维码/条形码界面扫码界面底下的文字
+         */
+        hintText?: string;
+        /**
+         * (可选项) 灯光开启文字
+         */
+        lightText?: string;
+        /**
+         * (可选项) 灯光关闭文字
+         */
+        closeText?: string;
+        /**
+         * (可选项) 是否隐藏相册按钮
+         */
+        isAlbum?: boolean;
+        /**
+         * （可选项）文字样式
+         */
+        font?: {
+            hintText?: {
+                size: number; // 数字类型，二维码/条形码界面扫码界面底下的文字大小
+                color: string; // 字符串类型；二维码/条形码界面扫码界面底下的文字颜色，支持#、rgb、rgba；默认：#FFFFFF
+            };
+            albumText?: {
+                size: number; // 数字类型，相册按钮文字大小
+                color: string; // 字符串类型；相册按钮文字颜色，支持#、rgb、rgba；默认：#FFFFFF
+            };
+            lightText?: {
+                size: number; // 数字类型，灯光开启/关闭文字大小
+                color: string; // 字符串类型；灯光开启/关闭文字颜色，支持#、rgb、rgba；默认：#FFFFFF
+            };
+        };
+        saveImg?: {
+            // 字符串类型；保存的文件路径；若路径不存在，则创建此路径，只支持fs://协议
+            path: string;
+            //（可选项）数字类型；生成图片的宽度，默认：200
+            w?: number;
+            //（可选项）数字类型；生成图片的高度，默认：200
+            h?: number;
+        };
+    };
+
+    type QRCodeScannerOpenRes = {
+        ret: {
+            eventType:  // 模块显示
+                | 'show'
+                // 访问摄像头失败
+                | 'cameraError'
+                // 访问相册失败
+                | 'albumError'
+                // 用户取消扫码
+                | 'cancel'
+                // 用户从系统相册选取二维码图片
+                | 'selectImage'
+                // 识别二维码/条码图片成功
+                | 'success'
+                // 扫码失败
+                | 'fail';
+            // 字符串类型；需要保存的二维码图片绝对路径（自定义路径
+            imgPath: string;
+            // 字符串类型；需要保存的二维码图片绝对路径（相册路径）
+            albumPath: string;
+            // 扫描的二维码/条形码信息
+            content: string;
+        };
+    };
+
+    type QRCodeScannerOpenViewParams = {
+        rect: RectBase;
+        rectOfInterest?: RectBase;
+        sound?: string;
+        saveToAlbum?: boolean;
+        saveImg?: {
+            // 字符串类型；保存的文件路径；若路径不存在，则创建此路径，只支持fs://协议
+            path: string;
+            //（可选项）数字类型；生成图片的宽度，默认：200
+            w?: number;
+            //（可选项）数字类型；生成图片的高度，默认：200
+            h?: number;
+        };
+        /**
+         * （可选项）连续扫描间隔；
+         */
+        interval?: number;
+        /**
+         * （可选项）模块视图添加到指定 frame 的名字（只指 frame，传 window 无效）
+         */
+        fixedOn?: number;
+        /**
+         * （可选项）模块是否随所属 window 或 frame 滚动;默认 true
+         */
+        fixed?: boolean;
+    };
+
+    type QRCodeScannerRes = {
+        open(p: QRCodeScannerOpenParams): Promise<QRCodeScannerOpenRes>;
+        openScanner(p: QRCodeScannerOpenParams): Promise<QRCodeScannerOpenRes>;
+        openView(p: QRCodeScannerOpenViewParams): Promise<QRCodeScannerOpenRes>;
+        /**
+         * 通知当前本模块app进入回到前台。此时模块会进行一些资源的恢复操作，防止照相机回来之后黑屏
+         */
+        onResume(): void;
+        /**
+         * 通知当前本模块app进入后台。此时模块会进行一些资源的暂停存储操作，防止照相机回来之后黑屏
+         */
+        onPause(): void;
+        /**
+         * 重设可自定义的二维码/条形码扫描器的大小和位置
+         */
+        setFrame(p: RectBase): void;
+        /**
+         * 关闭自定义大小的二维码/条码扫描器
+         */
+        closeView(): void;
+        /**
+         * 二维码/条形码图片解码
+         */
+        decodeImg(p?: {
+            sound?: string;
+            path?: string;
+        }): Promise<{
+            /**
+             * 是否解码成功
+             */
+            status: boolean;
+            /**
+             * 扫描的二维码/条形码信息
+             */
+            content: string;
+        }>;
+
+        /**
+         * 将字符串生成二维码/条形码图片
+         */
+        encodeImg(p: {
+            type?: 'bar_image' | 'qr_image';
+            content?: string;
+            saveToAlbum?: boolean;
+            saveImg?: {
+                // 字符串类型；保存的文件路径；若路径不存在，则创建此路径，只支持fs://协议
+                path: string;
+                //（可选项）数字类型；生成图片的宽度，默认：200
+                w?: number;
+                //（可选项）数字类型；生成图片的高度，默认：200
+                h?: number;
+            };
+        }): Promise<{
+            status: boolean;
+            imgPath: string;
+            albumPath: string;
+        }>;
+
+        /**
+         * 打开/关闭闪光灯（在Android上，已打开扫码视图时有效）
+         */
+        switchLight(p: { status: 'on' | 'off' }): void;
+    };
 }
