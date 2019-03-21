@@ -551,28 +551,26 @@ export namespace AK {
     };
 
     type QRCodeScannerOpenRes = {
-        ret: {
-            eventType:  // 模块显示
-                | 'show'
-                // 访问摄像头失败
-                | 'cameraError'
-                // 访问相册失败
-                | 'albumError'
-                // 用户取消扫码
-                | 'cancel'
-                // 用户从系统相册选取二维码图片
-                | 'selectImage'
-                // 识别二维码/条码图片成功
-                | 'success'
-                // 扫码失败
-                | 'fail';
-            // 字符串类型；需要保存的二维码图片绝对路径（自定义路径
-            imgPath: string;
-            // 字符串类型；需要保存的二维码图片绝对路径（相册路径）
-            albumPath: string;
-            // 扫描的二维码/条形码信息
-            content: string;
-        };
+        eventType:  // 模块显示
+            | 'show'
+            // 访问摄像头失败
+            | 'cameraError'
+            // 访问相册失败
+            | 'albumError'
+            // 用户取消扫码
+            | 'cancel'
+            // 用户从系统相册选取二维码图片
+            | 'selectImage'
+            // 识别二维码/条码图片成功
+            | 'success'
+            // 扫码失败
+            | 'fail';
+        // 字符串类型；需要保存的二维码图片绝对路径（自定义路径
+        imgPath: string;
+        // 字符串类型；需要保存的二维码图片绝对路径（相册路径）
+        albumPath: string;
+        // 扫描的二维码/条形码信息
+        content: string;
     };
 
     type QRCodeScannerOpenViewParams = {
