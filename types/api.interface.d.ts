@@ -194,15 +194,17 @@ export namespace AK {
     }
 
     type GetPictureCb = (
-        ret: {
-            data: string; //图片路径
-            base64Data: string; //base64数据，destinationType为base64时返回
-            duration: number;
-        },
+        ret: GetPictureRes,
         err: {
             msg: string;
         },
     ) => void;
+
+    type GetPictureRes = {
+        data: string; //图片路径
+        base64Data: string; //base64数据，destinationType为base64时返回
+        duration: number;
+    };
 
     interface AlertParams {
         title?: string;
@@ -600,7 +602,7 @@ export namespace AK {
         fixed?: boolean;
     };
 
-    type QRCodeScannerRes = {
+    interface QRCodeScannerRes {
         open(p: QRCodeScannerOpenParams): Promise<QRCodeScannerOpenRes>;
         openScanner(p: QRCodeScannerOpenParams): Promise<QRCodeScannerOpenRes>;
         openView(p: QRCodeScannerOpenViewParams): Promise<QRCodeScannerOpenRes>;
@@ -662,5 +664,5 @@ export namespace AK {
          * 打开/关闭闪光灯（在Android上，已打开扫码视图时有效）
          */
         switchLight(p: { status: 'on' | 'off' }): void;
-    };
+    }
 }

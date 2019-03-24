@@ -68,8 +68,7 @@ export declare namespace ak {
 
     function getPicture(
         params: AK.GetPictureParams,
-        cb: AK.GetPictureCb,
-    ): AK.ApiRes<true>;
+    ): AK.ApiRes<Promise<AK.GetPictureRes>>;
     function alert(params: AK.AlertParams, cb?: AK.AlertCb): AK.ApiRes<true>;
     function confirm(p: AK.ConfirmParams, cb?: AK.ConfirmRes): AK.ApiRes<true>;
     function showProgress(p: AK.ShowProgressParams): AK.ApiRes<true>;
