@@ -106,6 +106,7 @@ export declare namespace ak {
     ): AK.ApiRes<true>;
     function setStatusBarStyle(style: AK.StatusBarStyle): AK.ApiRes<true>;
     function request<T>(p: AK.RequestParams): AK.RequestRes<T>;
+    function clearCache(): AK.ApiRes<Promise<void>>;
 }
 
 // third
