@@ -665,4 +665,26 @@ export namespace AK {
          */
         switchLight(p: { status: 'on' | 'off' }): void;
     }
+
+    interface ActionSheetParams {
+        title?: string;
+        cancelTitle?: string;
+        destructiveTitle?: string;
+        buttons?: string[];
+        style?: {
+            layerColor?: string; //遮蔽层颜色，仅支持 rgba颜色，默认值：rgba（0, 0, 0, 0.4）
+            itemNormalColor?: string; //选项按钮正常状态背景颜色，支持#000、#000000、rgb、rgba，默认值：#F1F1F1
+            itemPressColor?: string; //选项按钮按下时背景颜色，支持#000、#000000、rgb、rgba，默认值：#E6E6E6
+            fontNormalColor?: string; //选项按钮正常状态文字颜色，支持#000、#000000、rgb、rgba，默认值：#007AFF
+            fontPressColor?: string; //选项按钮按下时文字颜色，支持#000、#000000、rgb、rgba，默认值：#0060F0
+            titleFontColor?: string; //标题文字颜色，支持#000、#000000、rgb、rgba，默认值：#8F8F8F
+        };
+    }
+
+    interface ActionSheetRes {
+        /**
+         * 从 1 开始
+         */
+        buttonIndex: number;
+    }
 }
