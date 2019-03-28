@@ -60,6 +60,7 @@ export declare namespace ak {
         name: T['name'],
         cb: (value: T['value']) => void,
     ): AK.ApiRes<true>;
+    function off<T>(name: T['name']): AK.ApiRes<true>;
     function setRefreshHeaderInfo(
         params: AK.SetRefreshHeaderInfoParams,
         cb: () => void,
