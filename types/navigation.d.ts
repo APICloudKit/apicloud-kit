@@ -67,4 +67,12 @@ export namespace Navigation {
         cannotClose?: boolean;
         statusBarStyle?: AK.StatusBarStyle;
     };
+
+    interface NavbarQueryEvent {
+        name: 'navbarQueryEvent';
+        value: {
+            pageName: string;
+            query: INavbarFrameQuery;
+        };
+    }
 }
