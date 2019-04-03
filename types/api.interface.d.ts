@@ -79,6 +79,7 @@ export namespace AK {
         name: string;
         hidden?: boolean;
         bgColor?: string;
+        bounces?: boolean;
     }
 
     interface SetFrameGroupAttrParams {
