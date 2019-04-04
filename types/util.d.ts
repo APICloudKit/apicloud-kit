@@ -17,4 +17,6 @@ export namespace akUtil {
     declare function getQueryUrl(url, query): { url: string };
 
     declare function getScript<T>(path: string, varName: string): Promise<T>;
+
+    declare function ensureAKReady(): Promise<any>;
 }

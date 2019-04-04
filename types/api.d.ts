@@ -107,7 +107,7 @@ export declare namespace ak {
         cb: AK.AddEventListenerCb<T>,
     ): AK.ApiRes<true>;
     function setStatusBarStyle(style: AK.StatusBarStyle): AK.ApiRes<true>;
-    function request<T>(p: AK.RequestParams): AK.RequestRes<T>;
+    function request<T>(p: AK.RequestParams): Promise<AK.RequestRes<T>>;
     function clearCache(): AK.ApiRes<Promise<void>>;
     function actionSheet(
         p: AK.ActionSheetParams,

@@ -483,11 +483,11 @@ export namespace AK {
         };
     };
 
-    type RequestRes<T> = Promise<{
+    type RequestRes<T> = {
         statusCode: number;
         headers: { ['Set-Cookie']: string };
         body: T;
-    }>;
+    };
 
     type QRCodeScannerOpenParams = {
         /**
