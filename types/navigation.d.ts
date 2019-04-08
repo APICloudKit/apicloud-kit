@@ -42,6 +42,7 @@ export namespace Navigation {
         hasNavbar: boolean;
         cannotClose: boolean;
         statusBarStyle?: AK.StatusBarStyle;
+        isClickBackToLauncher?: boolean;
     }
 
     interface IPageFrames {
@@ -66,6 +67,7 @@ export namespace Navigation {
         hasNavbar?: boolean;
         cannotClose?: boolean;
         statusBarStyle?: AK.StatusBarStyle;
+        isClickBackToLauncher?: boolean;
     };
 
     interface NavbarQueryEvent {
