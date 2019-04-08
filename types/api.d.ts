@@ -112,6 +112,7 @@ export declare namespace ak {
     function actionSheet(
         p: AK.ActionSheetParams,
     ): AK.ApiRes<Promise<AK.ActionSheetRes>>;
+    function toLauncher(): AK.ApiRes<void>;
 }
 
 // third
