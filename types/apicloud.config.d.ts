@@ -27,7 +27,7 @@ export interface apicloudConfig {
     };
 }
 
-type Permission = 'location' | 'internet';
+type Permission = 'location' | 'internet' | 'fileSystem';
 
 type Preference =
     | 'appBackground'
